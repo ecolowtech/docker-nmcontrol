@@ -46,6 +46,8 @@ docker run -d \
   --net $NET_NAME --ip $NM_IP \
   --restart=always \
   -e NM_DNS_RESOLVER=$NM_DNS_RESOLVER \
+  -e NM_DNS_HOST=0.0.0.0 \
+  -e NM_HTTP_HOST=0.0.0.0 \
   -e RPC_USER=$RPC_USER \
   -e RPC_PASS=$RPC_PASS \
   -e RPC_PORT=$RPC_PORT \
