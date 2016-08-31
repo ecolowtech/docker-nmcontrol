@@ -23,7 +23,7 @@ TAG="latest"
 
 # Docker NMControl container
 NM_CT="nmcontrol"
-NM_IP="10.17.0.7"
+NM_IP="10.17.0.5"
 
 # Docker network
 NET_NAME="isolated_nw"
@@ -39,14 +39,16 @@ RPC_PORT=$(docker exec $NMC_CT cat $NMC_CONF | grep rpcport | awk -F '[/=]' '{pr
 RPC_CONNECT=$(docker inspect -f '{{range .NetworkSettings.Networks}}{{.IPAddress}}{{end}}' $NMC_CT)
 
 # DNSChain configuration
-NM_DNS_RESOLVER="10.17.0.4" # we recommend running PowerDNS yourself and sending it there
+NM_DNS_RESOLVER1="10.17.0.4" # we recommend running PowerDNS yourself and sending it there
+NM_DNS_RESOLVER2=""
 
 # Create docker container
 docker run -d \
   --name $NM_CT \
   --net $NET_NAME --ip $NM_IP \
   --restart=always \
-  -e NM_DNS_RESOLVER=$NM_DNS_RESOLVER \
+  -e NM_DNS_RESOLVER1=$NM_DNS_RESOLVER1 \
+  -e NM_DNS_RESOLVER2=$NM_DNS_RESOLVER2 \
   -e NM_DNS_HOST=0.0.0.0 \
   -e NM_HTTP_HOST=0.0.0.0 \
   -e RPC_USER=$RPC_USER \
