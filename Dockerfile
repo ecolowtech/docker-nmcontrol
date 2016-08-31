@@ -54,4 +54,4 @@ ENTRYPOINT ["run.sh"]
 
 EXPOSE $NM_DNS_PORT/udp $NM_HTTP_PORT/tcp $NM_RPC_PORT/tcp
 VOLUME ["$NM_CONF_DIR", "$NMC_DATA_DIR"]
-CMD ["nmcontrol.py", "--daemon=0", "--debug=1", "--confdir=/etc/nmcontrol/conf", "start"]
+CMD ["nmcontrol.py", "--daemon=0", "--debug=0", "--confdir=/etc/nmcontrol/conf", "start"]
