@@ -23,7 +23,7 @@ TAG="latest"
 
 # Docker NMControl container
 NM_CT="nmcontrol"
-NM_IP="10.17.0.5"
+NM_IP="10.17.0.7"
 
 # Docker network
 NET_NAME="isolated_nw"
@@ -43,6 +43,7 @@ NM_DNS_RESOLVER="10.17.0.4" # we recommend running PowerDNS yourself and sending
 
 # Create docker container
 docker run -d \
+  --name $NM_CT \
   --net $NET_NAME --ip $NM_IP \
   --restart=always \
   -e NM_DNS_RESOLVER=$NM_DNS_RESOLVER \
