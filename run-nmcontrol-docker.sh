@@ -18,7 +18,7 @@ if [ $# -ne 1 ] ; then
 fi
 
 # Docker image
-IMG="zekaf/nmcontrol"
+IMG="nmcontrol/nmcontrol"
 TAG="latest"
 
 # Docker NMControl container
@@ -39,8 +39,8 @@ RPC_PORT=$(docker exec $NMC_CT cat $NMC_CONF | grep rpcport | awk -F '[/=]' '{pr
 RPC_CONNECT=$(docker inspect -f '{{range .NetworkSettings.Networks}}{{.IPAddress}}{{end}}' $NMC_CT)
 
 # DNSChain configuration
-NM_DNS_RESOLVER1="10.17.0.4" # we recommend running PowerDNS yourself and sending it there
-NM_DNS_RESOLVER2=""
+NM_DNS_RESOLVER1="8.8.8.8" # we recommend running PowerDNS yourself and sending it there
+NM_DNS_RESOLVER2="8.8.4.4"
 
 # Create docker container
 docker run -d \
